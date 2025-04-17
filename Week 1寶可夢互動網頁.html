@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>寶可夢英文訓練機</title>
+    <style>
+        body {
+            background-color: #fff8e1;
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            color: #ff6f00;
+            font-size: 36px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #ffca28;
+            color: #4e342e;
+            cursor: pointer;
+            margin: 15px;
+            box-shadow: 2px 2px 5px #aaa;
+        }
+        button:hover {
+            background-color: #ffd54f;
+        }
+        .result {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #6d4c41;
+        }
+        .box {
+            background-color: #fff3e0;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 30px; margin-bottom: 50px;
+            display: block; width: 60%; margin-left: auto; margin-right: auto;
+            box-shadow: 3px 3px 10px #bbb;
+        }
+        a {
+            text-decoration: none;
+            color: #0277bd;
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+    <audio id="sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_d40f849fd6.mp3?filename=correct-answer-3-6033.mp3"></audio>
+</head>
+
+<body>
+    <h1>寶可夢英文訓練機</h1>
+    <div class="box">
+        <h2>抽單字</h2>
+        <button onclick="drawWords()">點我抽三個單字</button>
+        <div class="result" id="wordResult">（等你來挑戰）</div>
+    </div>
+
+    <div class="box">
+        <h2>抽寶可夢編號</h2>
+        <button onclick="drawPokemon()">點我抽1～151號寶可夢</button>
+        <div class="result" id="pokemonResult">（會是哪隻呢？）</div>
+    </div>
+
+    <script>
+        const words = ["run", "swim", "fly", "jump", "fight", "sing", "sleep", "hide", "climb", "eat", "big", "small", "wings", "horns", "shell", "eyes", "fire", "fur", "claws", "spikes", "forest", "water", "mountain", "sky", "cave", "grass", "electric", "ice", "dark", "flame", "strong", "fast", "scary", "cute", "noisy", "light", "heavy", "slow", "roar", "teeth", "red", "blue", "green", "yellow", "purple", "pink", "white", "black", "orange", "brown"];
+
+        const pokemonNames = {1: "Bulbasaur / 妙蛙種子", 2: "Ivysaur / 妙蛙草", 3: "Venusaur / 妙蛙花", 4: "Charmander / 小火龍", 5: "Charmeleon / 火恐龍", 6: "Charizard / 噴火龍", 7: "Squirtle / 傑尼龜", 8: "Wartortle / 卡咪龜", 9: "Blastoise / 水箭龜", 10: "Caterpie / 綠毛蟲", 11: "Metapod / 鐵甲蛹", 12: "Butterfree / 巴大蝶", 13: "Weedle / 獨角蟲", 14: "Kakuna / 鐵殼蛹", 15: "Beedrill / 大針蜂", 16: "Pidgey / 波波", 17: "Pidgeotto / 比比鳥", 18: "Pidgeot / 大比鳥", 19: "Rattata / 小拉達", 20: "Raticate / 拉達", 21: "Spearow / 烈雀", 22: "Fearow / 大嘴雀", 23: "Ekans / 阿柏蛇", 24: "Arbok / 阿柏怪", 25: "Pikachu / 皮卡丘", 26: "Raichu / 雷丘", 27: "Sandshrew / 穿山鼠", 28: "Sandslash / 穿山王", 29: "Nidoran♀ / 尼多蘭", 30: "Nidorina / 尼多娜", 31: "Nidoqueen / 尼多后", 32: "Nidoran♂ / 尼多朗", 33: "Nidorino / 尼多力諾", 34: "Nidoking / 尼多王", 35: "Clefairy / 皮皮", 36: "Clefable / 皮可西", 37: "Vulpix / 六尾", 38: "Ninetales / 九尾", 39: "Jigglypuff / 胖丁", 40: "Wigglytuff / 胖可丁"};
+
+        function drawWords() {
+            let shuffled = words.sort(() => 0.5 - Math.random());
+            
+            let selected = shuffled.slice(0, 3);
+            let colors = ['#d32f2f', '#388e3c', '#1976d2'];
+            let coloredWords = selected.map((w, i) => '<span style="color:' + colors[i % colors.length] + '">' + w + '</span>');
+    
+            document.getElementById("wordResult").innerHTML = "你的單字是：" + coloredWords.join("、"); document.getElementById('sound').play();
+        }
+
+        function drawPokemon() {
+            let number = Math.floor(Math.random() * 40) + 1;
+            let name = pokemonNames[number] || "未知寶可夢";
+            let link = "https://wiki.52poke.com/zh-hant/" + encodeURIComponent(name.split(" / ")[0]);
+            document.getElementById("pokemonResult").innerHTML =
+                "你抽到的寶可夢編號是：<strong>" + number + "</strong><br>對應角色：" +
+                "<a href='" + link + "' target='_blank'>" + name + "</a>";
+        }
+    </script>
+</body>
+</html>
