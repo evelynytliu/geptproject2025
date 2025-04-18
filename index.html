@@ -17,7 +17,6 @@
                 color: #ffffff;
         }
 
-
         h1 {
                 color: #ffeb3b;
                 font-size: 36px;
@@ -64,6 +63,31 @@
                 text-decoration: none;
                 color: #bbdefb;
         }
+        .pokemon-gallery {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+                margin-bottom: 40px;
+        }
+
+        .pokemon-card {
+                text-align: center;
+                width: 100px;
+                font-size: 12px;
+                color: #ffffff;
+        }
+
+        .pokemon-card img {
+                width: 72px;
+                image-rendering: pixelated;
+                transition: transform 0.2s;
+        }
+
+        .pokemon-card img:hover {
+                transform: scale(1.1);
+        }
+
     </style>
 
 
@@ -74,6 +98,7 @@
 </head>
 
 <body>
+
     <h1>寶可夢英文訓練機</h1>
     <div class="box">
         <h2>抽單字</h2>
@@ -86,6 +111,10 @@
         <button onclick="drawPokemon()">點我抽寶可夢</button>
         <div class="result" id="pokemonResult">（會是哪隻呢？）</div>
     </div>
+
+<div class="pokemon-gallery">
+    <!-- 這裡會自動用 JavaScript 插入圖片 -->
+</div>
 
     <script>
         const words = ["fly", "swim", "jump", "fight", "sing", "sleep", "hide", "climb", 
@@ -121,9 +150,23 @@ function drawPokemon() {
         "<img src='" + imageUrl + "' alt='" + name + "' style='margin-top:10px; width:96px; image-rendering: pixelated;'>";
 }
 
-    </script>
-<div style="margin-top: 60px; font-size: 0.9em; color: #aaa; text-align: center;">
-  Made by Evelyn YT ｜© 2025
-</div>
+const pokemonGallery = document.querySelector('.pokemon-gallery');
+
+for (let i = 1; i <= 40; i++) {
+    const name = pokemonNames[i];
+    const engName = name.split(' / ')[0];
+    const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`;
+
+    const card = document.createElement('div');
+    card.className = 'pokemon-card';
+    card.innerHTML = `
+        <img src="${imgUrl}" alt="${engName}">
+        <div>${engName}</div>
+    `;
+    pokemonGallery.appendChild(card);
+}
+    
+	</script>
+
 </body>
 </html>
