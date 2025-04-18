@@ -64,12 +64,18 @@
 
     <div class="box">
         <h2>抽寶可夢編號</h2>
-        <button onclick="drawPokemon()">點我抽1～151號寶可夢</button>
+        <button onclick="drawPokemon()">點我抽寶可夢</button>
         <div class="result" id="pokemonResult">（會是哪隻呢？）</div>
     </div>
 
     <script>
-        const words = ["run", "swim", "fly", "jump", "fight", "sing", "sleep", "hide", "climb", "eat", "big", "small", "wings", "horns", "shell", "eyes", "fire", "fur", "claws", "spikes", "forest", "water", "mountain", "sky", "cave", "grass", "electric", "ice", "dark", "flame", "strong", "fast", "scary", "cute", "noisy", "light", "heavy", "slow", "roar", "teeth", "red", "blue", "green", "yellow", "purple", "pink", "white", "black", "orange", "brown"];
+        const words = ["fly", "swim", "jump", "fight", "sing", "sleep", "hide", "climb", 
+"bite", "shock", "breathe fire", "punch", "jump high", "sky",
+"big", "small", "fat", "thin", 
+"wings", "horns", "shell", "eyes", "fur", "claws", "spiky", "striped", "round", "furry",
+"electric", "ice", "fire", "dark", "grass", "flame", "teeth", "roar", 
+"red", "blue", "yellow", "green", "white", "black", "orange", "brown", "purple", 
+"fast", "strong", "scary", "cute", "colorful"];
 
         const pokemonNames = {1: "Bulbasaur / 妙蛙種子", 2: "Ivysaur / 妙蛙草", 3: "Venusaur / 妙蛙花", 4: "Charmander / 小火龍", 5: "Charmeleon / 火恐龍", 6: "Charizard / 噴火龍", 7: "Squirtle / 傑尼龜", 8: "Wartortle / 卡咪龜", 9: "Blastoise / 水箭龜", 10: "Caterpie / 綠毛蟲", 11: "Metapod / 鐵甲蛹", 12: "Butterfree / 巴大蝶", 13: "Weedle / 獨角蟲", 14: "Kakuna / 鐵殼蛹", 15: "Beedrill / 大針蜂", 16: "Pidgey / 波波", 17: "Pidgeotto / 比比鳥", 18: "Pidgeot / 大比鳥", 19: "Rattata / 小拉達", 20: "Raticate / 拉達", 21: "Spearow / 烈雀", 22: "Fearow / 大嘴雀", 23: "Ekans / 阿柏蛇", 24: "Arbok / 阿柏怪", 25: "Pikachu / 皮卡丘", 26: "Raichu / 雷丘", 27: "Sandshrew / 穿山鼠", 28: "Sandslash / 穿山王", 29: "Nidoran♀ / 尼多蘭", 30: "Nidorina / 尼多娜", 31: "Nidoqueen / 尼多后", 32: "Nidoran♂ / 尼多朗", 33: "Nidorino / 尼多力諾", 34: "Nidoking / 尼多王", 35: "Clefairy / 皮皮", 36: "Clefable / 皮可西", 37: "Vulpix / 六尾", 38: "Ninetales / 九尾", 39: "Jigglypuff / 胖丁", 40: "Wigglytuff / 胖可丁"};
 
