@@ -89,14 +89,20 @@
             document.getElementById("wordResult").innerHTML = "你的單字是：" + coloredWords.join("、"); document.getElementById('sound').play();
         }
 
-        function drawPokemon() {
-            let number = Math.floor(Math.random() * 40) + 1;
-            let name = pokemonNames[number] || "未知寶可夢";
-            let link = "https://wiki.52poke.com/zh-hant/" + encodeURIComponent(name.split(" / ")[0]);
-            document.getElementById("pokemonResult").innerHTML =
-                "你抽到的寶可夢編號是：<strong>" + number + "</strong><br>對應角色：" +
-                "<a href='" + link + "' target='_blank'>" + name + "</a>";
-        }
+function drawPokemon() {
+    let number = Math.floor(Math.random() * 40) + 1;
+    let name = pokemonNames[number] || "未知寶可夢";
+    let link = "https://wiki.52poke.com/zh-hant/" + encodeURIComponent(name.split(" / ")[0]);
+
+    // 使用 PokéAPI 像素風小圖
+    let imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + number + ".png";
+
+    document.getElementById("pokemonResult").innerHTML =
+        "你抽到的寶可夢編號是：<strong>" + number + "</strong><br>對應角色：" +
+        "<a href='" + link + "' target='_blank'>" + name + "</a><br>" +
+        "<img src='" + imageUrl + "' alt='" + name + "' style='margin-top:10px; width:96px; image-rendering: pixelated;'>";
+}
+
     </script>
 </body>
 </html>
