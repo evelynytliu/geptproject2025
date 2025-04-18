@@ -85,8 +85,20 @@
         }
 
         .pokemon-card img:hover {
-                transform: scale(1.1);
+                transform: scale(1.5);
         }
+
+        .pokemon-card .number {
+                font-weight: bold;
+                color: #ffeb3b;
+                margin-top: 5px;
+        }
+
+        .pokemon-card .name {
+                font-size: 11px;
+                margin-top: 3px;
+        }
+
 
     </style>
 
@@ -154,17 +166,19 @@ const pokemonGallery = document.querySelector('.pokemon-gallery');
 
 for (let i = 1; i <= 40; i++) {
     const name = pokemonNames[i];
-    const engName = name.split(' / ')[0];
+    const [engName, zhName] = name.split(' / ');
     const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`;
 
     const card = document.createElement('div');
     card.className = 'pokemon-card';
     card.innerHTML = `
         <img src="${imgUrl}" alt="${engName}">
-        <div>${engName}</div>
+        <div class="number">#${String(i).padStart(3, '0')}</div>
+        <div class="name">${engName} / ${zhName}</div>
     `;
     pokemonGallery.appendChild(card);
 }
+
     
 	</script>
 
